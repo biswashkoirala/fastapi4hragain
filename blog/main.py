@@ -83,6 +83,23 @@ def delete(id, db:Session =Depends(get_db)):
     return Response(status_code=status.HTTP_204_NO_CONTENT)
     #return {'message': f'Blog with id {id} deleted'}
 
+@app.put('/blog/{id}/upvote',status_code=status.HTTP_202_ACCEPTED, tags=['vote'])
+def upvote(id, db:Session=Depends(get_db)):
+    score = db.query(models.Blog).filter(models.Blog.id==id).first().score
+    db.query(models.Blog).filter(models.Blog.id==id).update({'score':score+1})
+    db.commit()
+    return f'Score for BLog with id {id} upvoted'
+
+@app.put('/blog/{id}/downvote',status_code=status.HTTP_202_ACCEPTED, tags=['vote'])
+def downvote(id, db:Session=Depends(get_db)):
+    score = db.query(models.Blog).filter(models.Blog.id==id).first().score
+    db.query(models.Blog).filter(models.Blog.id==id).update({'score':score-1})
+    db.commit()
+    return f'Score for BLog with id {id} downvoted'
+
+
+
+
 
 @app.post('/user', response_model=schemas.ShowUser, tags=['users'])
 def create_user(request: schemas.User, db: Session = Depends(get_db) ):

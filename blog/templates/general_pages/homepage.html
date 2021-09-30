@@ -2,11 +2,52 @@
 
 
 {% block title %} 
-  <title>Job Board</title>
+  <title>FastAPI CRUD</title>
 {% endblock %} 
 
 {% block content %} 
   <div class="container">
-    <h1 class="display-4">FastAPI CRUD</h1>
+    <h1 class="display-4">This is FastAPI CRUD. CRUD Blogs. CR users. Upvote and Downvote Posts</h1>
   </div>
+
+  <h1>All implemented methods : Auto Documentation: FastAPI Docs. Click 'Try it out' > Give proper field values then 'Execute' </h1>
+  <form action="/docs" target="_blank">
+    <input type="submit" value="FastAPI Auto Docs" />
+  </form>
+  <form action="/docs?#/blogs/all_blogs_get" target="_blank">
+    <input type="submit" value="Read Blogs" />
+  </form>
+
+  <form action="/docs?#/blogs/show_blog__id__get" target="_blank">
+    <input type="submit" value="Read Blog with id" />
+  </form>
+
+  <form action="/docs?#/blogs/create_blog_post" target="_blank">
+    <input type="submit" value="Create Blog" />
+  </form>
+
+  <form action="/docs?#/blogs/update_blog__id__put" target="_blank">
+    <input type="submit" value="Update Blog" />
+  </form>
+
+  <form action="/docs?#/blogs/delete_blog__id__delete" target="_blank">
+    <input type="submit" value="Delete Blog" />
+  </form>
+
+  <form action="/docs?#/vote/upvote_blog__id__upvote_put" target="_blank">
+    <input type="submit" value="Upvote" />
+  </form>
+  <form action="/docs?#/vote/downvote_blog__id__downvote_put" target="_blank">
+    <input type="submit" value="Downvote" />
+  </form>
+
+  <h1>Users</h1>
+  <form action="/docs?#/users/create_user_user_post" target="_blank">
+    <input type="submit" value="Create User" />
+  </form>
+
+  <form action="/docs?#/users/get_user_user__id__get" target="_blank">
+    <input type="submit" value="Read User with id" />
+  </form>
+
 {% endblock %} 
